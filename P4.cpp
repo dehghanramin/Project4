@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include "Referee.hpp"
+#include <stdlib.h>
+// #include "Referee.hpp"
 using namespace std;
 
 
@@ -21,11 +22,12 @@ void writeRefereeInfo();
 
 
 
-CReferee referees[10];
+int referees[10];
+const int* END = &referees[((sizeof(referees)/sizeof(*referees)) - 1)];
 
 
 
-void main()
+int main(void)
 {
     int choice;
     do {
