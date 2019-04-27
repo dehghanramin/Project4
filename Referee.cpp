@@ -162,3 +162,46 @@ bool CReferee::isNumeric(char* const pInput) const
   }
   return true;
 }
+
+std::string CReferee::getID() const
+{
+    return id;
+}
+
+std::string CReferee::getFirstName() const
+{
+    return firstname;
+}
+
+std::string CReferee::getLastName() const
+{
+    return lastname;
+}
+
+void CReferee::setID(std::string const& id_)
+{
+    id = id_;
+}
+
+void CReferee::setFirstName(std::string const& firstname_)
+{
+    firstname = firstname_;
+}
+
+void CReferee::setLastName(std::string const& lastname_)
+{
+    lastname = lastname_;
+}
+
+void CReferee::setGrade(RefereeGrade const& grade_)
+{
+    grade = grade_;
+}
+
+void CReferee::reset()
+{
+    id = "R000";
+    firstname = "None";
+    lastname = "None";
+    grade = UNKNOWN;
+}

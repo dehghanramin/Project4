@@ -1,7 +1,7 @@
+#include "Referee.hpp"
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-// #include "Referee.hpp"
 using namespace std;
 
 
@@ -20,17 +20,34 @@ void Quit();
 void readRefereeInfo();
 void writeRefereeInfo();
 
+CReferee* findSlot(std::string const&);
+std::string getFirstName();
+std::string getLastName();
+std::string getID();
+RefereeGrade getGrade();
+RefereeGrade convertShortToGrade(unsigned short const&);
+void outputError();
+void outputNoSlot();
+// void brute_search(std::ostream&);
+// void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
+void printheader(std::ostream&);
+void checkOutput(bool const&);
+void output(CReferee*, std::ostream&);
+void outputFile();
 
 
-int referees[10];
-const int* END = &referees[((sizeof(referees)/sizeof(*referees)) - 1)];
+
+CReferee referees[10];
+const CReferee* END = &referees[((sizeof(referees)/sizeof(*referees)) - 1)];
+enum State {EXACT, ID, HIGHER, LOWER, NAME};
 
 
 
 int main(void)
 {
     int choice;
-    do {
+    do
+    {
             system("clear");
             choice = menu();
             switch (choice)
@@ -101,63 +118,269 @@ int menu()
 
 void listAllReferees()
 {
-    cout << "Inside listAllReferees () \n\n";
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getGrade != UNKNOWN)
+            cout << *pItr;
+    }
 }
 
  
 
 void listRefereesOfSpecificGrade()
 {
-    cout << "Inside listRefereesOfSpecificGrade () \n\n";
+    cout << "Select Grade:\n"
+         << "1. CLUB\n"
+         << "2. STATE\n"
+         << "3. NATIONAL\n"
+         << "4. FIFA" << endl;
+    short input;
+    cin >> input;
+    RefereeGrade grade;
+    switch (input)
+    {
+        case 1:
+            grade = CLUB;
+            break;
+        case 2:
+            grade = STATE;
+            break;
+        case 3:
+            grade = NATIONAL;
+            break;
+        case 4:
+            grade = FIFA;
+            break;
+        default:
+            grade = UNKNOWN;
+            break;
+    }
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getGrade == grade)
+            cout << *pItr;
+    }
 }
 
  
 
 void listtRefereesWithGradeHigherThanSpecificGrade()
 {
-    cout << "Inside listtRefereesWithGradeHigherThanSpecificGrade () \n\n";
+    cout << "Select Grade:\n"
+         << "1. CLUB\n"
+         << "2. STATE\n"
+         << "3. NATIONAL\n"
+         << "4. FIFA" << endl;
+    short input;
+    cin >> input;
+    RefereeGrade grade;
+    switch (input)
+    {
+        case 1:
+            grade = CLUB;
+            break;
+        case 2:
+            grade = STATE;
+            break;
+        case 3:
+            grade = NATIONAL;
+            break;
+        case 4:
+            grade = FIFA;
+            break;
+        default:
+            grade = UNKNOWN;
+            break;
+    }
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getGrade > grade)
+            cout << *pItr;
+    }
 }
 
  
 
 void listtRefereesWithGradeLowerThanSpecificGrade()
 {
-    cout << "Inside listtRefereesWithGradeLowerThanSpecificGrade () \n\n";
+    cout << "Select Grade:\n"
+         << "1. CLUB\n"
+         << "2. STATE\n"
+         << "3. NATIONAL\n"
+         << "4. FIFA" << endl;
+    short input;
+    cin >> input;
+    RefereeGrade grade;
+    switch (input)
+    {
+        case 1:
+            grade = CLUB;
+            break;
+        case 2:
+            grade = STATE;
+            break;
+        case 3:
+            grade = NATIONAL;
+            break;
+        case 4:
+            grade = FIFA;
+            break;
+        default:
+            grade = UNKNOWN;
+            break;
+    }
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getGrade < grade)
+            cout << *pItr;
+    }
 }
 
  
 
 void listtRefereeInfoWithId()
 {
-    cout << "Inside listtRefereeInfoWithId () \n\n";
+    cout << "Enter ID: ";
+    string input;
+    cin >> input;
+    cout << endl;
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getID == input)
+            cout << *pItr;
+    }
 }
 
  
 
 void listtRefereeInfoWithNames()
 {
-    cout << "Inside listtRefereeInfoWithNames () \n\n";
+    cout << "Enter name: ";
+    string input;
+    cin >> input;
+    cout << endl;
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getFirstName == input || pItr->getLastName == input)
+            cout << *pItr;
+    }
 }
 
  
 
 void addNewReferee()
 {
-    cout << "Inside addNewReferee () \n\n";
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getID == UNKNOWN)
+        {
+            cout << "Enter ID: ";
+            string id;
+            cin >> id;
+            cout << endl;
+            cout << "Enter First Name: ";
+            string fname;
+            cin >> fname;
+            cout << endl;
+            cout << "Enter Last Name: ";
+            string lname;
+            cin >> lname;
+            cout << endl;
+            cout << "Select Grade:\n"
+                 << "1. CLUB\n"
+                 << "2. STATE\n"
+                 << "3. NATIONAL\n"
+                 << "4. FIFA" << endl;
+            short input;
+            cin >> input;
+            RefereeGrade grade;
+            switch (input)
+            {
+                case 1:
+                    grade = CLUB;
+                    break;
+                case 2:
+                    grade = STATE;
+                    break;
+                case 3:
+                    grade = NATIONAL;
+                    break;
+                case 4:
+                    grade = FIFA;
+                    break;
+                default:
+                    grade = UNKNOWN;
+                    break;
+            }
+            pItr->setID(id);
+            pItr->setFirstName(fname);
+            pItr->setLastName(lname);
+            pItr->setGrade(grade);
+        }
+        break;
+    }
 }
 
 
 
 void removeReferee()
 {
-    cout << "Inside removeReferee () \n\n";
+    cout << "Enter ID: ";
+    string input;
+    cin >> input;
+    cout << endl;
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getID() == input)
+        {
+            pItr->reset();
+            break;
+        }
+    }
 }
 
 
 
 void updateRefereeGrade()
 {
-    cout << "Inside updateRefereeGrade () \n\n";
+    cout << "Enter ID: ";
+    string input;
+    cin >> input;
+    cout << endl;
+    for (CReferee* pItr = referees; pItr <= END; ++pItr)
+    {
+        if (pItr->getID() == input)
+        {
+            cout << "Select Grade:\n"
+                 << "1. CLUB\n"
+                 << "2. STATE\n"
+                 << "3. NATIONAL\n"
+                 << "4. FIFA" << endl;
+            short input;
+            cin >> input;
+            RefereeGrade grade;
+            switch (input)
+            {
+                case 1:
+                    grade = CLUB;
+                    break;
+                case 2:
+                    grade = STATE;
+                    break;
+                case 3:
+                    grade = NATIONAL;
+                    break;
+                case 4:
+                    grade = FIFA;
+                    break;
+                default:
+                    grade = UNKNOWN;
+                    break;
+            }
+            pItr->setGrade(grade);
+            break;
+        }
+    }
 }
 
 
@@ -165,7 +388,7 @@ void updateRefereeGrade()
 void Quit()
 {
     writeRefereeInfo();
-    cout << "Have a nice day \n\n";
+    cout << "Quitting......." << endl;
 }
 
 

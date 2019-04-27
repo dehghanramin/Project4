@@ -13,7 +13,14 @@ class CReferee
         friend std::ostream& operator<<(std::ostream&, CReferee&);
         void updateGrade(RefereeGrade const&);
         std::string getGrade() const;
+        std::string getID() const;
+        std::string getFirstName() const;
+        std::string getLastName() const;
         void setGrade(RefereeGrade const&);
+        void setID(std::string const&);
+        void setFirstName(std::string const&);
+        void setLastName(std::string const&);
+        void reset();
     private:
         std::string id;
         std::string firstname;
