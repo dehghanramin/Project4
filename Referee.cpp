@@ -1,6 +1,7 @@
 #include "Referee.hpp"
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 
 CReferee::CReferee(std::string const& id_, std::string const& firstname_, std::string const& lastname_, RefereeGrade const& grade_) :
 id(id_),
@@ -10,10 +11,6 @@ grade(grade_) {}
 
 CReferee::~CReferee() {}
 
-void CReferee::setGrade(RefereeGrade const& grade_)
-{
-    grade = convertShortToGrade(grade_);
-}
 
 std::string CReferee::getGrade() const
 {
@@ -204,4 +201,9 @@ void CReferee::reset()
     firstname = "None";
     lastname = "None";
     grade = UNKNOWN;
+}
+
+RefereeGrade CReferee::getGrade(short const& i) const
+{
+    return grade;
 }

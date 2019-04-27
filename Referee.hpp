@@ -7,13 +7,14 @@ enum RefereeGrade {UNKNOWN, CLUB, STATE, NATIONAL, FIFA};
 class CReferee
 {
     public:
-        CReferee(std::string const& = "R000", std::string const& = "None", std::string const& = "None", RefereeGrade const& = UNKNOWN);
+        CReferee(std::string const& = "0000", std::string const& = "None", std::string const& = "None", RefereeGrade const& = UNKNOWN);
         ~CReferee();
         friend std::istream& operator>>(std::istream&, CReferee&);
         friend std::ostream& operator<<(std::ostream&, CReferee&);
         void updateGrade(RefereeGrade const&);
         std::string getGrade() const;
         std::string getID() const;
+        RefereeGrade getGrade(short const&) const;
         std::string getFirstName() const;
         std::string getLastName() const;
         void setGrade(RefereeGrade const&);
