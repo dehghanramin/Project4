@@ -1,4 +1,13 @@
+//Filename: Referee.cpp
+//Programmer:  Ramin Dehghan                                      CSCI 123, Spring 2019
+//Project #4                                                      Instructor:  Timothy Mai
+//Due Date:  04/27/2019                                           Date Submitted: 
+//Program Description: A referee listing program with various different ways to display content it is holding. Can add, remove, list, ...
+//referees. All search algorithms written in linear time. Includes input spinners and function abstractions. Reformatted to prevent the use of
+//dynamic varibales for optimization. Now implemented with use of classes instead of structs
+
 #include "Referee.hpp"
+#include <fstream>
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
@@ -17,21 +26,19 @@ std::string CReferee::getGrade() const
     return convertGradeToString();
 }
 
-std::istream& operator>>(std::istream& ins, CReferee& obj) // Equilivant of getInfo()
+std::istream& operator>>(std::ifstream& ins, CReferee& obj) // Equilivant of getInfo()
 {
-    obj.promptUser("ID");
-    std::getline(ins, obj.id);
-    obj.promptUser("First Name");
-    std::getline(ins, obj.firstname);
-    obj.promptUser("Last Name");
-    std::getline(ins, obj.lastname);
-    obj.grade = obj.gradeSpinner();
+    ins >> obj.id;
+    ins >> obj.firstname;
+    ins >> obj.lastname;
+    std::string grade;
+    ins >> grade;
+    obj.grade = obj.convertStringToGrade(grade);
     return ins;
 }
 
-std::ostream& operator<<(std::ostream& ost, CReferee& obj)
+std::ostream& operator<<(std::ofstream& ost, CReferee& obj)
 {
-    obj.displayHeader(ost);
     obj.formattedOutput(ost);
     return ost;
 }
@@ -41,59 +48,33 @@ void CReferee::promptUser(std::string const& prompt) const
     std::cout << "Please Enter " << prompt << ": ";
 }
 
-RefereeGrade CReferee::gradeSpinner() const
+RefereeGrade CReferee::convertStringToGrade(std::string const& input) const
 {
-    std::cout << "\tSelect Grade:\n"
-              << "1. UNKNOWN\n"
-              << "2. CLUB\n"
-              << "3. STATE\n"
-              << "4. NATIONAL\n"
-              << "5. FIFA" << std::endl;
-    char input[2];
-    std::cin >> input;
-    if (!((atoi(input) > 0) && (atoi(input) < 6)))
+    
+    if (input == "UNKNOWN")
     {
-        return gradeSpinner();
-    }
-    return convertShortToGrade(atoi(input));
-}
-
-RefereeGrade CReferee::convertShortToGrade(short const& input) const
-{
-    switch (input)
-    {
-    case 1:
         return UNKNOWN;
-        break;
-    case 2:
+    }
+    else if (input == "CLUB")
+    {
         return CLUB;
-        break;
-    case 3:
+    }
+    else if (input == "STATE")
+    {
         return STATE;
-        break;
-    case 4:
+    }
+    else if (input == "NATIONAL")
+    {
         return NATIONAL;
-        break;
-    case 5:
+    }
+    else if (input == "FIFA")
+    {
         return FIFA;
-        break;
-    default:
-        std::cerr << "Error in conversion!" << std::endl;
-        return UNKNOWN;
-        break;
     }
 }
 
-void CReferee::displayHeader(std::ostream& ost) const
-{
-    ost << "|" <<std::string(56, '-') << "|" << std::endl
-               << "| " << std::setw(12) << "ID" << " |" << std::setw(12)
-               << "Fisrt Name" << " |" << std::setw(12)
-               << "Last Name" << " |" << std::setw(12)
-               << "Grade" << " |"
-               << std::endl
-               << "|" <<std::string(56, '-') << "|" << std::endl;
-}
+
+
 
 std::string CReferee::insertFirstName() const
 {
@@ -197,7 +178,7 @@ void CReferee::setGrade(RefereeGrade const& grade_)
 
 void CReferee::reset()
 {
-    id = "R000";
+    id = "0000";
     firstname = "None";
     lastname = "None";
     grade = UNKNOWN;
@@ -206,4 +187,72 @@ void CReferee::reset()
 RefereeGrade CReferee::getGrade(short const& i) const
 {
     return grade;
+}
+
+bool CReferee::isEmpty() const
+{
+    return (id == "0000");
+}
+
+bool operator==(CReferee const& obj, CReferee const& ibj)
+{
+    return (obj.id == ibj.id);
+}
+
+bool operator==(CReferee const& obj, std::string const& input)
+{
+    return (obj.id == input);
+}
+
+bool operator==(CReferee const& obj, RefereeGrade const& grade_)
+{
+    return (obj.grade == grade_);
+}
+
+bool operator>(CReferee const& obj, RefereeGrade const& grade_)
+{
+    return (obj.grade > grade_);
+}
+
+bool operator<(CReferee const& obj, RefereeGrade const& grade_)
+{
+    return (obj.grade < grade_);
+}
+
+bool CReferee::isSameName(std::string const& fname, std::string const& lname) const
+{
+    return (firstname == fname || lastname == lname);
+}
+
+void CReferee::updateReferee(std::string const& id_, std::string const& fname, std::string const& lname, RefereeGrade const& grade_)
+{
+    id = id_;
+    firstname = fname;
+    lastname = lname;
+    grade = grade_;
+}
+
+std::istream& operator>>(std::istream& ins, CReferee& obj)
+{
+    obj.promptUser("ID");
+    ins >> obj.id;
+    std::cout << std::endl;
+    obj.promptUser("First Name");
+    ins >> obj.firstname;
+    std::cout << std::endl;
+    obj.promptUser("Last Name");
+    ins >> obj.lastname;
+    std::cout << std::endl;
+    obj.promptUser("Grade");
+    std::string grade;
+    ins >> grade;
+    std::cout << std::endl;
+    obj.grade = obj.convertStringToGrade(grade);
+    return ins;
+}
+
+std::ostream& operator<<(std::ostream& ost, CReferee& obj)
+{
+    obj.formattedOutput(ost);
+    return ost;
 }
