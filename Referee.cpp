@@ -124,11 +124,11 @@ std::string CReferee::convertGradeToString() const
 
 void CReferee::formattedOutput(std::ostream& ost) const
 {
-   ost << "| " << std::setw(12) << id << " |" << std::setw(12)
-               << firstname << " |" << std::setw(12)
-               << lastname << " |" << std::setw(12)
-               << convertGradeToString() << " |" << std::endl
-               << std::endl;
+   ost << id << std::setw(12)
+        << firstname << std::setw(12)
+        << lastname << std::setw(12)
+        << convertGradeToString() << std::endl
+        << std::endl;
 }
 
 bool CReferee::isNumeric(char* const pInput) const

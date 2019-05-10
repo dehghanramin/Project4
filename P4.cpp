@@ -7,12 +7,13 @@
 //dynamic varibales for optimization. Now implemented with use of classes instead of structs
 
 #include "Referee.hpp"
+#include "Cprinter.hpp"
 #include <iostream>
 #include <string>
 #include <stdlib.h>
 #include <iomanip>
 #include <fstream>
-
+using namespace std;
 
 
 
@@ -31,11 +32,11 @@ RefereeGrade convertShortToGrade(unsigned short const&);
 RefereeGrade convertStringToGrade(std::string const&);
 void outputError();
 void outputNoSlot();
-void brute_search(std::ostream&);
-void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
+// void brute_search(std::ostream&);
+// void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
 void printheader(std::ostream&);
 void checkOutput(bool const&);
-void listAllReferees();
+void listAllReferees(Cprinter&);
 void ListRefereesOfSpecificGrade();
 void listRefereesWithGradeHigherThanSpecifiedGrade();
 void listRefereesWithGradeLowerThanSpecifiedGrade();
@@ -55,6 +56,10 @@ void readFile(std::ifstream&);
 
 int main(void)
 {
+    Cprinter printer;
+    printer.setStartPointer(referees);
+    printer.setEndPointer(END);
+
     readRefereeInfo();
     int choice;
     do
@@ -64,7 +69,7 @@ int main(void)
         switch (choice)
         {
             case 1:
-                listAllReferees();
+                listAllReferees(printer);
                 break;
             case 2:
                 ListRefereesOfSpecificGrade();
@@ -131,44 +136,44 @@ int menu()
 
 
 
-void listAllReferees()
+void listAllReferees(Cprinter& printer)
 {
-    brute_search(std::cout);
+    printer.print();
 }
 
 
 
 void ListRefereesOfSpecificGrade()
 {
-    brute_search(EXACT, getGrade());
+    // brute_search(EXACT, getGrade());
 }
 
 
 
 void listRefereesWithGradeHigherThanSpecifiedGrade()
 {
-    brute_search(HIGHER, getGrade());
+    // brute_search(HIGHER, getGrade());
 }
 
 
 
 void listRefereesWithGradeLowerThanSpecifiedGrade()
 {
-    brute_search(LOWER, getGrade());
+    // brute_search(LOWER, getGrade());
 }
 
 
 
 void listRefereeInfoWithId()
 {
-    brute_search(ID, UNKNOWN, getID());
+    // brute_search(ID, UNKNOWN, getID());
 }
 
 
 
 void listRefereeInfoWithNames()
 {
-    brute_search(NAME, UNKNOWN, "0000", getFirstName(), getLastName());
+    // brute_search(NAME, UNKNOWN, "0000", getFirstName(), getLastName());
 }
 
 
@@ -288,7 +293,6 @@ RefereeGrade getGrade()
     unsigned short grade;
     std::cin >> grade;
     return convertShortToGrade(grade);
-    
 }
 
 
@@ -304,86 +308,73 @@ void checkOutput(bool const& parity)
     }
 }
 
-//General output function used for outputting all referees.
 
-void brute_search(std::ostream& handle)
-{
-    printheader(handle);
-    for (CReferee* pR = referees; pR <= END; ++pR)
-    {
-        if (!pR->isEmpty())
-        {
-            output(pR, handle);
-        }
-    }
-
-}
 
 //General search function to find & output referees based on State.
 
-void brute_search(State const& state, RefereeGrade const& grade, std::string const& cond, std::string const& first, std::string const& last)
-{
-    bool found = false;
-    switch (state)
-    {
-    case ID:
-        printheader(std::cout);
-        if (CReferee* ref = findSlot(cond))
-        {
-            output(ref, std::cout);
-            found = true;
-        }
-        break;
-    case HIGHER:
-        printheader(std::cout);
-        for (CReferee* pR = referees; pR <= END; ++pR)
-        {
-            if (*pR > grade)
-            {
-                output(pR, std::cout);
-                found = true;
-            }
-        }
-        break;
-    case LOWER:
-        printheader(std::cout);
-        for (CReferee* pR = referees; pR <= END; ++pR)
-        {
-            if ((pR->getGrade(1) < grade) && (!pR->isEmpty()))
-            {
-                output(pR, std::cout);
-                found = true;
-            }
-        }
-        break;
-    case EXACT:
-        printheader(std::cout);
-        for (CReferee* pR = referees; pR <= END; ++pR)
-        {
-            if (*pR == grade)
-            {
-                output(pR, std::cout);
-                found = true;
-            }
-        }
-        break;
-    case NAME:
-        printheader(std::cout);
-        for (CReferee* pR = referees; pR <= END; ++pR)
-        {
-            if (pR->isSameName(first, last))
-            {
-                output(pR, std::cout);
-                found = true;
-            }
-        }
-        break;
-    default:
-        std::cout << "Error in conversion!" << std::endl;
-        break;
-    }
-    checkOutput(found);
-}
+// void brute_search(State const& state, RefereeGrade const& grade, std::string const& cond, std::string const& first, std::string const& last)
+// {
+//     bool found = false;
+//     switch (state)
+//     {
+//     case ID:
+//         printheader(std::cout);
+//         if (CReferee* ref = findSlot(cond))
+//         {
+//             output(ref, std::cout);
+//             found = true;
+//         }
+//         break;
+//     case HIGHER:
+//         printheader(std::cout);
+//         for (CReferee* pR = referees; pR <= END; ++pR)
+//         {
+//             if (*pR > grade)
+//             {
+//                 output(pR, std::cout);
+//                 found = true;
+//             }
+//         }
+//         break;
+//     case LOWER:
+//         printheader(std::cout);
+//         for (CReferee* pR = referees; pR <= END; ++pR)
+//         {
+//             if ((pR->getGrade(1) < grade) && (!pR->isEmpty()))
+//             {
+//                 output(pR, std::cout);
+//                 found = true;
+//             }
+//         }
+//         break;
+//     case EXACT:
+//         printheader(std::cout);
+//         for (CReferee* pR = referees; pR <= END; ++pR)
+//         {
+//             if (*pR == grade)
+//             {
+//                 output(pR, std::cout);
+//                 found = true;
+//             }
+//         }
+//         break;
+//     case NAME:
+//         printheader(std::cout);
+//         for (CReferee* pR = referees; pR <= END; ++pR)
+//         {
+//             if (pR->isSameName(first, last))
+//             {
+//                 output(pR, std::cout);
+//                 found = true;
+//             }
+//         }
+//         break;
+//     default:
+//         std::cout << "Error in conversion!" << std::endl;
+//         break;
+//     }
+//     checkOutput(found);
+// }
 
 //Print Header Information for output.
 
@@ -459,7 +450,6 @@ void writeRefereeInfo()
     std::ofstream outStream;
     outStream.open("Referees.dat");
     checkOpenFile(outStream);
-    brute_search(outStream);
     outStream.close();
 }
 
@@ -507,18 +497,7 @@ void promptUser(std::string const& prompt)
     std::cout << prompt << std::endl;
 }
 
-// void readFile(std::ifstream& ins)
-// {
-//     std::string id;
-//     CReferee* pItr = referees;
-//     while(ins >> id)
-//     {
-//         std::string fname, lname, grade_s;
-//         ins >> fname >> lname >> grade_s;
-//         pItr->updateReferee(id, fname, lname, convertStringToGrade(grade_s));
-//         pItr++;
-//     }
-// }
+
 
 void readFile(std::ifstream& ins)
 {
