@@ -1,4 +1,4 @@
-appname := test
+appname := P4
 
 CXX := g++
 CXXFLAGS := -Wall -g -std=c++11
