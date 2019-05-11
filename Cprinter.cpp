@@ -15,3 +15,9 @@ void Cprinter::print() const
         }
     }
 }
+
+void Cprinter::printEmpty() const
+{
+    std::cout << std::string(17, ' ') << "Nothing to show here !"
+              << std::string(17, ' ') << std::endl;
+}

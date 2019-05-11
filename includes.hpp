@@ -1,5 +1,6 @@
 #include "Referee.hpp"
 #include "CAPrinter.hpp"
+#include "CAFPrinter.hpp"
 #include "CSGPrinter.hpp"
 #include "CHGPrinter.hpp"
 #include "CLGPrinter.hpp"

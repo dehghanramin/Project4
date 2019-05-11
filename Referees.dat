@@ -1,21 +1,24 @@
-|--------------------------------------------------------|
-|           ID |  Fisrt Name |   Last Name |       Grade |
-|--------------------------------------------------------|
-|         0001 |        Mike |       Apple |        CLUB |
+        0001          Mike         Apple          CLUB
 
-|         0012 |        Josh |      Boeing |       STATE |
 
-|         0103 |       Linda |       Intel |       STATE |
+        0012          Josh        Boeing         STATE
 
-|         0084 |        John |      Rambus |    NATIONAL |
 
-|         0205 |       Becky |      Sirius |        CLUB |
+        0103         Linda         Intel         STATE
 
-|         0045 |         Tom |    Skyworks |        CLUB |
 
-|         0807 |       Kevin |      Suzuki |    NATIONAL |
+        0084          John        Rambus      NATIONAL
 
-|         0074 |       Henry |      Xilinx |       STATE |
 
-|         1234 |       Ramin |     Dehghan |        CLUB |
+        0205         Becky        Sirius          CLUB
+
+
+        0045           Tom      Skyworks          CLUB
+
+
+        0807         Kevin        Suzuki      NATIONAL
+
+
+        0074         Henry        Xilinx         STATE
+
 

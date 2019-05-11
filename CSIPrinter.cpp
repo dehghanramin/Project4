@@ -14,12 +14,18 @@ void CSIPrinter::setID(std::string const& id_)
 
 void CSIPrinter::print() const
 {
+    bool empty = true;
     for (CReferee* pIterator = start_pointer; pIterator <= end_pointer; ++pIterator)
     {
         if ((!pIterator->isEmpty()) && (*pIterator == id))
         {
             std::cout << *pIterator << std::endl;
+            empty = false;
         }
+    }
+    if (empty)
+    {
+        printEmpty();
     }
 }
 

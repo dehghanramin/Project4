@@ -29,8 +29,7 @@ void updateRefereeGrade();
 void Quit();
 void writeRefereeInfo();
 void readRefereeInfo();
-void checkOpenFile(std::ifstream&);
-void checkOpenFile(std::ofstream&);
+void checkOpenFile(std::fstream&);
 void readFile(std::ifstream&);
 
 int main(void)
@@ -144,7 +143,7 @@ void listRefereeInfoWithId()
 
 void listRefereeInfoWithNames()
 {
-    CSNPrinter printer(referees, END, getFirstName(), getLastName());
+    CSNPrinter printer(referees, END);
     printheader(cout);
     printer.print();
 }
@@ -192,7 +191,6 @@ void readRefereeInfo()
 {
     std::ifstream inStream;
     inStream.open("Referees_input.dat");
-    checkOpenFile(inStream);
     readFile(inStream);
     inStream.close(); 
 }
@@ -201,33 +199,18 @@ void writeRefereeInfo()
 {
     std::ofstream outStream;
     outStream.open("Referees.dat");
-    checkOpenFile(outStream);
+    CAFPrinter printer(referees, END, outStream);
+    printer.print();
     outStream.close();
 }
 
-void checkOpenFile(std::ifstream& handle)
-{
-    if (handle.fail())
-    {
-        std::cerr << "Error in opening file!" << std::endl;
-        exit(1);
-    }
-}
+
 
 void readFile(std::ifstream& ins)
 {
     CReferee* pItr = referees;
     while((ins >> *pItr) && (pItr <= END))
     {
-        pItr++;
-    }
-}
-
-void checkOpenFile(std::ofstream& handle)
-{
-    if (handle.fail())
-    {
-        std::cerr << "Error in opening file!" << std::endl;
-        exit(1);
+        ++pItr;
     }
 }

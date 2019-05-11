@@ -8,7 +8,9 @@ class Cprinter : public Ccollection
 public:
     Cprinter();
     Cprinter(CReferee*, CReferee*);
+protected:
     virtual void print() const;
+    virtual void printEmpty() const;
 };
 
 #endif
