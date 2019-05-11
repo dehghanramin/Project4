@@ -2,6 +2,8 @@
 
 Cprinter::Cprinter() : start_pointer(NULL), end_pointer(NULL) {}
 
+Cprinter::Cprinter(CReferee* start, CReferee* end) : start_pointer(start), end_pointer(end) {}
+
 void Cprinter::setStartPointer(CReferee* pointer_input)
 {
     start_pointer = pointer_input;

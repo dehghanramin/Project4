@@ -6,13 +6,7 @@
 //referees. All search algorithms written in linear time. Includes input spinners and function abstractions. Reformatted to prevent the use of
 //dynamic varibales for optimization. Now implemented with use of classes instead of structs
 
-#include "Referee.hpp"
-#include "Cprinter.hpp"
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <iomanip>
-#include <fstream>
+#include "includes.hpp"
 using namespace std;
 
 
@@ -36,7 +30,7 @@ void outputNoSlot();
 // void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
 void printheader(std::ostream&);
 void checkOutput(bool const&);
-void listAllReferees(Cprinter&);
+void listAllReferees();
 void ListRefereesOfSpecificGrade();
 void listRefereesWithGradeHigherThanSpecifiedGrade();
 void listRefereesWithGradeLowerThanSpecifiedGrade();
@@ -56,10 +50,6 @@ void readFile(std::ifstream&);
 
 int main(void)
 {
-    Cprinter printer;
-    printer.setStartPointer(referees);
-    printer.setEndPointer(END);
-
     readRefereeInfo();
     int choice;
     do
@@ -69,7 +59,7 @@ int main(void)
         switch (choice)
         {
             case 1:
-                listAllReferees(printer);
+                listAllReferees();
                 break;
             case 2:
                 ListRefereesOfSpecificGrade();
@@ -136,8 +126,9 @@ int menu()
 
 
 
-void listAllReferees(Cprinter& printer)
+void listAllReferees()
 {
+    CAPrinter printer(referees, END);
     printer.print();
 }
 
@@ -145,7 +136,8 @@ void listAllReferees(Cprinter& printer)
 
 void ListRefereesOfSpecificGrade()
 {
-    // brute_search(EXACT, getGrade());
+    CSGPrinter printer(referees, END, getGrade());
+    printer.print();
 }
 
 

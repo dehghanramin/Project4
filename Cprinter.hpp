@@ -8,10 +8,11 @@ class Cprinter
 {
 public:
     Cprinter();
+    Cprinter(CReferee*, CReferee*);
     void setStartPointer(CReferee*);
     void setEndPointer(CReferee*);
     virtual void print() const;
-private:
+protected:
     CReferee* start_pointer;
     CReferee* end_pointer;
 };
