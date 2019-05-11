@@ -1,29 +1,29 @@
-#include "CSGPrinter.hpp"
+#include "CLGPrinter.hpp"
 
-CSGPrinter::CSGPrinter() : Cprinter(), grade(UNKNOWN) {}
+CLGPrinter::CLGPrinter() : Cprinter(), grade(UNKNOWN) {}
 
-CSGPrinter::CSGPrinter(CReferee* start, CReferee* end) : Cprinter(start, end)
+CLGPrinter::CLGPrinter(CReferee* start, CReferee* end) : Cprinter(start, end)
 {
     setGrade();
 }
 
-void CSGPrinter::print() const
+void CLGPrinter::print() const
 {
     for (CReferee* pIterator = start_pointer; pIterator <= end_pointer; ++pIterator)
     {
-        if (*pIterator == grade)
+        if (*pIterator < grade)
         {
             std::cout << *pIterator << std::endl;
         }
     }
 }
 
-void CSGPrinter::setGrade()
+void CLGPrinter::setGrade()
 {
     grade = getGrade();
 }
 
-RefereeGrade CSGPrinter::getGrade() const
+RefereeGrade CLGPrinter::getGrade() const
 {
     std::cout << "Select Grade:\n1. CLUB\n2. STATE\n3. NATIONAL\n4. FIFA\n";
     unsigned short input;
@@ -32,7 +32,7 @@ RefereeGrade CSGPrinter::getGrade() const
     return toGrade(input);
 }
 
-RefereeGrade CSGPrinter::toGrade(unsigned short const& input) const
+RefereeGrade CLGPrinter::toGrade(unsigned short const& input) const
 {
     switch (input)
     {

@@ -1,12 +1,12 @@
-#ifndef _CSGPRINTER_HPP_
-#define _CSGPRINTER_HPP_
+#ifndef _CLGPRINTER_HPP_
+#define _CLGPRINTER_HPP_
 #include "Cprinter.hpp"
 
-class CSGPrinter : public Cprinter
+class CLGPrinter : public Cprinter
 {
 public:
-    CSGPrinter();
-    CSGPrinter(CReferee*, CReferee*);
+    CLGPrinter();
+    CLGPrinter(CReferee*, CReferee*);
     virtual void print() const;
 private:
     RefereeGrade grade;

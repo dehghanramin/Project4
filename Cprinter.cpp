@@ -1,18 +1,9 @@
 #include "Cprinter.hpp"
 
-Cprinter::Cprinter() : start_pointer(NULL), end_pointer(NULL) {}
 
-Cprinter::Cprinter(CReferee* start, CReferee* end) : start_pointer(start), end_pointer(end) {}
+Cprinter::Cprinter() : Ccollection(NULL, NULL) {}
 
-void Cprinter::setStartPointer(CReferee* pointer_input)
-{
-    start_pointer = pointer_input;
-}
-
-void Cprinter::setEndPointer(CReferee* pointer_input)
-{
-    end_pointer = pointer_input;
-}
+Cprinter::Cprinter(CReferee* start, CReferee* end) : Ccollection(start, end) {}
 
 void Cprinter::print() const
 {
