@@ -20,13 +20,7 @@ grade(grade_) {}
 
 CReferee::~CReferee() {}
 
-
-std::string CReferee::getGrade() const
-{
-    return convertGradeToString();
-}
-
-std::istream& operator>>(std::ifstream& ins, CReferee& obj) // Equilivant of getInfo()
+std::istream& operator>>(std::ifstream& ins, CReferee& obj)
 {
     ins >> obj.id;
     ins >> obj.firstname;
@@ -43,14 +37,8 @@ std::ostream& operator<<(std::ofstream& ost, CReferee& obj)
     return ost;
 }
 
-void CReferee::promptUser(std::string const& prompt) const
-{
-    std::cout << "Please Enter " << prompt << ": ";
-}
-
 RefereeGrade CReferee::convertStringToGrade(std::string const& input) const
-{
-    
+{ 
     if (input == "UNKNOWN")
     {
         return UNKNOWN;
@@ -73,60 +61,22 @@ RefereeGrade CReferee::convertStringToGrade(std::string const& input) const
     }
 }
 
-
-
-
-std::string CReferee::insertFirstName() const
-{
-    return firstname;
-}
-
-std::string CReferee::insertLastName() const
-{
-    return lastname;
-}
-
-std::string CReferee::insertID() const
-{
-    return id;
-}
-
-std::string CReferee::insertGrade() const
-{
-    return convertGradeToString();
-}
-
 std::string CReferee::convertGradeToString() const
 {
     switch (grade)
     {
-    case UNKNOWN:
-        return "UNKNOWN";
-        break;
-    case CLUB:
-        return "CLUB";
-        break;
-    case STATE:
-        return "STATE";
-        break;
-    case NATIONAL:
-        return "NATIONAL";
-        break;
-    case FIFA:
-        return "FIFA";
-        break;
-    default:
-        std::cerr << "Error in conversion!" << std::endl;
-        return "Error";
-        break;
+        #define DEFINE_GRADE(grade, int) case grade: return #grade;
+        #include "GradeEnum.hpp"
+        #undef DEFINE_GRADE
+        default: return "ERROR";
     }
 }
 
 void CReferee::formattedOutput(std::ostream& ost) const
 {
-   ost << id << std::setw(12)
-        << firstname << std::setw(12)
-        << lastname << std::setw(12)
+   ost << std::setw(12) << id << std::setw(14)
+        << firstname << std::setw(14)
+        << lastname << std::setw(14)
         << convertGradeToString() << std::endl
         << std::endl;
 }
@@ -141,41 +91,6 @@ bool CReferee::isNumeric(char* const pInput) const
   return true;
 }
 
-std::string CReferee::getID() const
-{
-    return id;
-}
-
-std::string CReferee::getFirstName() const
-{
-    return firstname;
-}
-
-std::string CReferee::getLastName() const
-{
-    return lastname;
-}
-
-void CReferee::setID(std::string const& id_)
-{
-    id = id_;
-}
-
-void CReferee::setFirstName(std::string const& firstname_)
-{
-    firstname = firstname_;
-}
-
-void CReferee::setLastName(std::string const& lastname_)
-{
-    lastname = lastname_;
-}
-
-void CReferee::setGrade(RefereeGrade const& grade_)
-{
-    grade = grade_;
-}
-
 void CReferee::reset()
 {
     id = "0000";
@@ -184,19 +99,9 @@ void CReferee::reset()
     grade = UNKNOWN;
 }
 
-RefereeGrade CReferee::getGrade(short const& i) const
-{
-    return grade;
-}
-
 bool CReferee::isEmpty() const
 {
     return (id == "0000");
-}
-
-bool operator==(CReferee const& obj, CReferee const& ibj)
-{
-    return (obj.id == ibj.id);
 }
 
 bool operator==(CReferee const& obj, std::string const& input)
@@ -232,27 +137,13 @@ void CReferee::updateReferee(std::string const& id_, std::string const& fname, s
     grade = grade_;
 }
 
-std::istream& operator>>(std::istream& ins, CReferee& obj)
-{
-    obj.promptUser("ID");
-    ins >> obj.id;
-    std::cout << std::endl;
-    obj.promptUser("First Name");
-    ins >> obj.firstname;
-    std::cout << std::endl;
-    obj.promptUser("Last Name");
-    ins >> obj.lastname;
-    std::cout << std::endl;
-    obj.promptUser("Grade");
-    std::string grade;
-    ins >> grade;
-    std::cout << std::endl;
-    obj.grade = obj.convertStringToGrade(grade);
-    return ins;
-}
-
 std::ostream& operator<<(std::ostream& ost, CReferee& obj)
 {
     obj.formattedOutput(ost);
     return ost;
+}
+
+void CReferee::setGrade(RefereeGrade const& input)
+{
+    grade = input;
 }

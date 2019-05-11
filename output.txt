@@ -1,0 +1,442 @@
+Script started on Sat 11 May 2019 07:30:24 AM PDT
+rdehghan@hpserver:~/Documents/repos/Project4 rdehghan@hpserver Project4]$ ./P4.out 
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 1
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0001          Mike         Apple          CLUB
+
+
+        0012          Josh        Boeing         STATE
+
+
+        0103         Linda         Intel         STATE
+
+
+        0084          John        Rambus      NATIONAL
+
+
+        0205         Becky        Sirius          CLUB
+
+
+        0045           Tom      Skyworks          CLUB
+
+
+        0807         Kevin        Suzuki      NATIONAL
+
+
+        0074         Henry        Xilinx         STATE
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 2
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+2
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0012          Josh        Boeing         STATE
+
+
+        0103         Linda         Intel         STATE
+
+
+        0074         Henry        Xilinx         STATE
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 3
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+3
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+                 Nothing to show here !                 
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 4
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+3
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0001          Mike         Apple          CLUB
+
+
+        0012          Josh        Boeing         STATE
+
+
+        0103         Linda         Intel         STATE
+
+
+        0205         Becky        Sirius          CLUB
+
+
+        0045           Tom      Skyworks          CLUB
+
+
+        0074         Henry        Xilinx         STATE
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 5
+Enter ID: 1234
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+                 Nothing to show here !                 
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 5
+Enter ID: 0205
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0205         Becky        Sirius          CLUB
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 6
+Enter First Name: Ramin
+
+Enter Last Name: Dehghan
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+                 Nothing to show here !                 
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 6
+Enter First Name: Becky
+
+Enter Last Name: Sirius
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0205         Becky        Sirius          CLUB
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 7
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+2
+
+Enter Last Name: Dehghan
+
+Enter First Name: Ramin
+
+Enter ID: 1234
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 1
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0001          Mike         Apple          CLUB
+
+
+        0012          Josh        Boeing         STATE
+
+
+        0103         Linda         Intel         STATE
+
+
+        0084          John        Rambus      NATIONAL
+
+
+        0205         Becky        Sirius          CLUB
+
+
+        0045           Tom      Skyworks          CLUB
+
+
+        0807         Kevin        Suzuki      NATIONAL
+
+
+        0074         Henry        Xilinx         STATE
+
+
+        1234         Ramin       Dehghan         STATE
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 8
+Enter ID: 0084
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 1
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0001          Mike         Apple          CLUB
+
+
+        0012          Josh        Boeing         STATE
+
+
+        0103         Linda         Intel         STATE
+
+
+        0205         Becky        Sirius          CLUB
+
+
+        0045           Tom      Skyworks          CLUB
+
+
+        0807         Kevin        Suzuki      NATIONAL
+
+
+        0074         Henry        Xilinx         STATE
+
+
+        1234         Ramin       Dehghan         STATE
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 9
+Enter ID: 0001
+
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+4
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 2
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+4
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+        0001          Mike         Apple          FIFA
+
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 10
+Quitting.....
+
+
+Script done on Sat 11 May 2019 07:31:46 AM PDT

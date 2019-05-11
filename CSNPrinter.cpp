@@ -11,7 +11,7 @@ Cprinter(start, end)
 
 void CSNPrinter::print() const
 {
-    bool empty = false;
+    bool empty = true;
     for (CReferee* pIterator = start_pointer; pIterator <= end_pointer; ++pIterator)
     {
         if (pIterator->isSameName(first, last))

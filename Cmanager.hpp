@@ -8,15 +8,16 @@ class Cmanager : Ccollection
 public:
     Cmanager();
     Cmanager(CReferee*, CReferee*);
-    bool addRef();
-    bool updateRef();
-    bool removeRef();
+    void addRef();
+    void updateRef();
+    void removeRef();
 private:
     std::string getID() const;
     std::string getFirst() const;
     std::string getLast() const;
     unsigned short getGrade() const;
     RefereeGrade toGrade(short const&) const;
+    void printFound() const;
 };
 
 #endif

@@ -10,7 +10,12 @@
 #define _REFEREE_HPP_
 #include <string>
 
-enum RefereeGrade {UNKNOWN, CLUB, STATE, NATIONAL, FIFA};
+enum RefereeGrade
+{
+    #define DEFINE_GRADE(grade, int) grade,
+    #include "GradeEnum.hpp"
+    #undef DEFINE_GRADE
+};
 
 class CReferee
 {
@@ -19,24 +24,14 @@ class CReferee
         ~CReferee();
         friend std::istream& operator>>(std::ifstream&, CReferee&);
         friend std::ostream& operator<<(std::ofstream&, CReferee&);
-        friend std::istream& operator>>(std::istream&, CReferee&);
         friend std::ostream& operator<<(std::ostream&, CReferee&);
-        friend bool operator==(CReferee const&, CReferee const&);
         friend bool operator==(CReferee const&, std::string const&);
         friend bool operator==(CReferee const&, RefereeGrade const&);
         friend bool operator>(CReferee const&, RefereeGrade const&);
         friend bool operator<(CReferee const&, RefereeGrade const&);
         bool isSameName(std::string const&, std::string const&) const;
         void updateReferee(std::string const&, std::string const& , std::string const&, RefereeGrade const&);
-        std::string getGrade() const;
-        std::string getID() const;
-        RefereeGrade getGrade(short const&) const;
-        std::string getFirstName() const;
-        std::string getLastName() const;
         void setGrade(RefereeGrade const&);
-        void setID(std::string const&);
-        void setFirstName(std::string const&);
-        void setLastName(std::string const&);
         void reset();
         bool isEmpty() const;
     private:
@@ -44,14 +39,8 @@ class CReferee
         std::string firstname;
         std::string lastname;
         RefereeGrade grade;
-        void promptUser(std::string const&) const;
-        RefereeGrade gradeSpinner() const;
         RefereeGrade convertStringToGrade(std::string const& input) const;
         std::string convertGradeToString() const;
-        std::string insertFirstName() const;
-        std::string insertLastName() const;
-        std::string insertID() const;
-        std::string insertGrade() const;
         void formattedOutput(std::ostream&) const;
         bool isNumeric(char* const) const;
 };

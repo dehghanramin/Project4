@@ -4,7 +4,7 @@
 //Due Date:  04/27/2019                                           Date Submitted: 
 //Program Description: A referee listing program with various different ways to display content it is holding. Can add, remove, list, ...
 //referees. All search algorithms written in linear time. Includes input spinners and function abstractions. Reformatted to prevent the use of
-//dynamic varibales for optimization. Now implemented with use of classes instead of structs
+//dynamic varibales for optimization. Now implemented with use of classes instead of structs, print functions implemented using polymorphism
 
 #include "includes.hpp"
 using namespace std;
@@ -13,10 +13,7 @@ CReferee referees[10];
 constexpr CReferee* END = &referees[((sizeof(referees)/sizeof(*referees)) - 1)];
 
 int menu();
-void outputError();
-void outputNoSlot();
 void printheader(std::ostream&);
-void checkOutput(bool const&);
 void listAllReferees();
 void ListRefereesOfSpecificGrade();
 void listRefereesWithGradeHigherThanSpecifiedGrade();
@@ -29,7 +26,6 @@ void updateRefereeGrade();
 void Quit();
 void writeRefereeInfo();
 void readRefereeInfo();
-void checkOpenFile(std::fstream&);
 void readFile(std::ifstream&);
 
 int main(void)
@@ -77,7 +73,6 @@ int main(void)
                 break;
         }
     } while (choice > 0 && choice < 10);
-    
     return 0;
 }
 
@@ -191,6 +186,11 @@ void readRefereeInfo()
 {
     std::ifstream inStream;
     inStream.open("Referees_input.dat");
+    if (inStream.fail())
+    {
+        std::cerr << "Open failure!";
+        exit(1);
+    }
     readFile(inStream);
     inStream.close(); 
 }

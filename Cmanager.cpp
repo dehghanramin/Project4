@@ -4,45 +4,54 @@ Cmanager::Cmanager() : Ccollection(NULL, NULL) {}
 
 Cmanager::Cmanager(CReferee* start, CReferee* end) : Ccollection(start, end) {}
 
-bool Cmanager::addRef()
+void Cmanager::addRef()
 {
-    for (CReferee* pIterator = start_pointer; start_pointer <= end_pointer; ++pIterator)
+    bool found = false;
+    for (CReferee* pIterator = start_pointer; pIterator <= end_pointer; ++pIterator)
     {
         if (pIterator->isEmpty())
         {
             pIterator->updateReferee(getID(), getFirst(), getLast(), toGrade(getGrade()));
-            return true;
+            found = true;
+            break;
         }
     }
-    return false;
+    if (!found)
+        printFound();
 }
 
-bool Cmanager::updateRef()
+void Cmanager::updateRef()
 {
+    bool found = false;
     std::string target = getID();
-    for (CReferee* pIterator = start_pointer; start_pointer <= end_pointer; ++pIterator)
+    for (CReferee* pIterator = start_pointer; pIterator <= end_pointer; ++pIterator)
     {
         if (*pIterator == target)
         {
             pIterator->setGrade(toGrade(getGrade()));
-            return true;
+            found = true;
+            break;
         }
     }
-    return false;
+    if (!found)
+        printFound();
 }
 
-bool Cmanager::removeRef()
+void Cmanager::removeRef()
 {
+    bool found = false;
     std::string target = getID();
-    for (CReferee* pIterator = start_pointer; start_pointer <= end_pointer; ++pIterator)
+    for (CReferee* pIterator = start_pointer; pIterator <= end_pointer; ++pIterator)
     {
         if (*pIterator == target)
         {
             pIterator->reset();
-            return true;
+            found = true;
+            break;
         }
     }
-    return false;
+    if (!found)
+        printFound();
 }
 
 std::string Cmanager::getID() const
@@ -91,4 +100,11 @@ RefereeGrade Cmanager::toGrade(short const& input) const
         #undef DEFINE_GRADE
         default: return UNKNOWN;
     }
+}
+
+void Cmanager::printFound() const
+{
+    std::cout << std::string(14, ' ')
+                  << "Nothing found here!!" << std::string(14, ' ')
+                  << std::endl;
 }
